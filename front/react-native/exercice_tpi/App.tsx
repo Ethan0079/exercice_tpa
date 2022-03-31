@@ -5,19 +5,20 @@ import { StyleSheet, Text, TouchableOpacityBase, View } from 'react-native';
 export default function App(this: any) {
   return (
     <View style={styles.container}>
-      <TouchableOpacityBase onPress={this.login} style={styles.button}>
+      <TouchableOpacityBase onPress={read} style={styles.button}>
         <text style={styles.buttontText}>Get data</text>
       </TouchableOpacityBase>
     </View>
   );
 }
 
-const login = () => {
+const read = () => {
   fetch('http://exercice-tpa/rest-api/contact/read.php',{
     method: 'GET',
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: 
+      'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       id: 1,
