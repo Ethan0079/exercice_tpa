@@ -1,13 +1,29 @@
 import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacityBase, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Text} from 'react-native';
+import { View } from 'react-native';
 
-export default function App(this: any) {
+export default function App() {
+  const [count, setCount] = useState(0);
+  const onPress = () => setCount(prevCount => prevCount + 1);
+
   return (
+    // <View style={styles.container}>
+    //   <TouchableOpacityBase onPress={read} style={styles.button}>
+    //     <Text style={styles.text}>Read</Text>
+    //   </TouchableOpacityBase>
+    // </View>
     <View style={styles.container}>
-      <TouchableOpacityBase onPress={read} style={styles.button}>
-        <text style={styles.buttontText}>Get data</text>
-      </TouchableOpacityBase>
+      <View style={styles.countContainer}>
+        <Text>Count: {count}</Text>
+      </View>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={read}
+      >
+        <Text>Press Here</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -19,10 +35,7 @@ const read = () => {
       Accept: 
       'application/json',
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      id: 1,
-    })
+    }
   })
 
   .then((response) => response.json())
@@ -38,14 +51,16 @@ const read = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
+    paddingHorizontal: 10
   },
-  button:{
-    backgroundColor: 'red',
+  button: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10
   },
-  buttontText:{
-    color: '#fff',
+  countContainer: {
+    alignItems: "center",
+    padding: 10
   }
 });
