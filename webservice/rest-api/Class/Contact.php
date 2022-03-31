@@ -17,14 +17,15 @@ class Contact {
 	
 	function read(){	
 		if($this->id) {
-			$stmt = $this->conn->prepare("SELECT * FROM ".$this->itemsTable." WHERE id = ?");
+			$stmt = $this->conn->prepare("SELECT * FROM ".$this->contactTable." WHERE id = ?");
 			$stmt->bind_param("i", $this->id);					
 		} else {
-			$stmt = $this->conn->prepare("SELECT * FROM ".$this->itemsTable);		
+			$stmt = $this->conn->prepare("SELECT * FROM ".$this->contactTable);		
 		}		
 		$stmt->execute();			
 		$result = $stmt->get_result();		
-		return $result;	
+		return $result;
+		$stmt.close();
 	}
 	
 	function create(){
@@ -52,30 +53,31 @@ class Contact {
 	function update(){
 	 
 		$stmt = $this->conn->prepare("
-			UPDATE ".$this->itemsTable." 
-			SET name= ?, description = ?, price = ?, category_id = ?, created = ?
+			UPDATE ".$this->contactTable." 
+			SET firstname= ?, lastname = ?, age = ?, email = ?, tel_number = ?
 			WHERE id = ?");
 	 
 		$this->id = htmlspecialchars(strip_tags($this->id));
-		$this->name = htmlspecialchars(strip_tags($this->name));
-		$this->description = htmlspecialchars(strip_tags($this->description));
-		$this->price = htmlspecialchars(strip_tags($this->price));
-		$this->category_id = htmlspecialchars(strip_tags($this->category_id));
-		$this->created = htmlspecialchars(strip_tags($this->created));
+		$this->firstname = htmlspecialchars(strip_tags($this->firstname));
+		$this->lastname = htmlspecialchars(strip_tags($this->lastname));
+		$this->age = htmlspecialchars(strip_tags($this->age));
+		$this->email = htmlspecialchars(strip_tags($this->email));
+		$this->tel_number = htmlspecialchars(strip_tags($this->tel_number));
 	 
-		$stmt->bind_param("ssiisi", $this->name, $this->description, $this->price, $this->category_id, $this->created, $this->id);
+		$stmt->bind_param("ssissi", $this->firstname, $this->lastname, $this->age, $this->email, $this->tel_number, $this->id);
 		
 		if($stmt->execute()){
 			return true;
 		}
 	 
 		return false;
+		$stmt.close();
 	}
 	
 	function delete(){
 		
 		$stmt = $this->conn->prepare("
-			DELETE FROM ".$this->itemsTable." 
+			DELETE FROM ".$this->contactTable." 
 			WHERE id = ?");
 			
 		$this->id = htmlspecialchars(strip_tags($this->id));
@@ -86,7 +88,8 @@ class Contact {
 			return true;
 		}
 	 
-		return false;		 
+		return false;
+		$stmt.close();	 
 	}
 }
 ?>
