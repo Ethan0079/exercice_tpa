@@ -30,7 +30,7 @@ export default function App() {
 }
 
 const read = () => {
-  fetch('http://exercice-tpa/rest-api/contact/read.php',{
+  fetch('https://exercice-tpa/rest-api/contact/read.php',{
     method: 'GET',
     headers: {
       Accept: 

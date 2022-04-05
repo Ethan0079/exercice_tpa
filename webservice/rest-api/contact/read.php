@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: https://snack-web-player.s3.us-west-1.amazonaws.com/");
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../config/Database.php';
