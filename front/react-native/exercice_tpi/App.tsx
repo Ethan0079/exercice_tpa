@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import { Text} from 'react-native';
-import { View } from 'react-native';
+import {useState} from 'react';
+import {StyleSheet} from 'react-native';
+import {TouchableOpacity} from 'react-native';
+import {Text} from 'react-native';
+import {View} from 'react-native';
 
 export default function App() {
   const [count, setCount] = useState(0);
