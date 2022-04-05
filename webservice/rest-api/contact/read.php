@@ -1,6 +1,10 @@
 <?php
 header("Access-Control-Allow-Origin: https://snack-web-player.s3.us-west-1.amazonaws.com/");
 header("Content-Type: application/json; charset=UTF-8");
+header("Location: http://exercice-tpa/rest-api/contact/read.php");
+header("Access-Control-Allow-Methods: READ");
+header("Access-Control-Max-Age: 3600");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once '../config/Database.php';
 include_once '../class/Contact.php';
