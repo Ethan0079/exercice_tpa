@@ -4,48 +4,46 @@ import {StyleSheet} from 'react-native';
 import {TouchableOpacity} from 'react-native';
 import {Text} from 'react-native';
 import {View} from 'react-native';
+import {FlatList} from 'react-native';
+import {ContactList} from './ContactList';
 
 export default function App() {
   const [count, setCount] = useState(0);
+  const [result, setContact] = useState('');
   const onPress = () => setCount(prevCount => prevCount + 1);
 
   return (
-    // <View style={styles.container}>
-    //   <TouchableOpacityBase onPress={read} style={styles.button}>
-    //     <Text style={styles.text}>Read</Text>
-    //   </TouchableOpacityBase>
-    // </View>
     <View style={styles.container}>
-      <View style={styles.countContainer}>
+      {/* <View style={styles.countContainer}>
         <Text>Count: {count}</Text>
       </View>
       <TouchableOpacity
         style={styles.button}
         onPress={read}
       >
-        <Text>Press Here</Text>
-      </TouchableOpacity>
+        <Text>Get Contact</Text>
+        
+      </TouchableOpacity> */}
+
+
+      <ContactList/>
     </View>
   );
 }
 
-const read = () => {
-  fetch('https://exercice-tpa/rest-api/contact/read.php',{
-    method: 'GET',
-    headers: {
-      Accept: 
-      'application/json',
-      'Content-Type': 'application/json'
-    }
-  })
+const read = async () => {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "text/plain");
 
-  .then((response) => response.json())
-  .then((res) => {
-    alert(res.data[0].nom);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders
+  };
+
+  await fetch("http://exercice-tpa/rest-api/contact/read.php", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 }
 
 
