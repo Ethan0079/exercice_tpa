@@ -5,48 +5,35 @@ import {TouchableOpacity} from 'react-native';
 import {Text} from 'react-native';
 import {View} from 'react-native';
 import {FlatList} from 'react-native';
-import {ContactList} from './ContactList';
-import Navbar from './navbar';
+import {ContactList} from '../Contact/ContactList';
+import Navbar from '../Navbar/Navbar';
 
 export default function App() {
   const [count, setCount] = useState(0);
   const [result, setContact] = useState('');
   const onPress = () => setCount(prevCount => prevCount + 1);
+  const [contactMenu, openContactMenu] = React.useState(false);
+  const [homeMenu, openHomeMenu] = React.useState(false);
+  const [OtherMenu, openOtherMenu] = React.useState(false);
+
+  function MenuLink(props:any) {
+    const isContactMenu = props.IsContactMenu;
+    if (contactMenu) {
+      return <ContactList />;
+    }
+    return <Text>Hello</Text>;
+  }
 
   return (
+    <>
     <View style={styles.container}>
-      {/* <View style={styles.countContainer}>
-        <Text>Count: {count}</Text>
-      </View>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={read}
-      >
-        <Text>Get Contact</Text>
-        
-      </TouchableOpacity> */}
-
       <Navbar/>
-      <ContactList />
+      <MenuLink IsContactMenu={contactMenu} />
     </View>
+    
+  </>
   );
 }
-
-// const read = async () => {
-//   var myHeaders = new Headers();
-//   myHeaders.append("Content-Type", "text/plain");
-
-//   var requestOptions = {
-//     method: 'GET',
-//     headers: myHeaders
-//   };
-
-//   await fetch("http://exercice-tpa/rest-api/contact/read.php", requestOptions)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));
-// }
-
 
 const styles = StyleSheet.create({
   container: {

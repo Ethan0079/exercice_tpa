@@ -1,5 +1,5 @@
 import React from "react";
-import { IContact } from "./IContact";
+import { IContact } from "../../Interface/IContact";
 
 
 export function ContactList() {
