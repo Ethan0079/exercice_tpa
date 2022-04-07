@@ -6,6 +6,7 @@ import {Text} from 'react-native';
 import {View} from 'react-native';
 import {FlatList} from 'react-native';
 import {ContactList} from './ContactList';
+import Navbar from './navbar';
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -25,33 +26,33 @@ export default function App() {
         
       </TouchableOpacity> */}
 
-
-      <ContactList/>
+      <Navbar/>
+      <ContactList />
     </View>
   );
 }
 
-const read = async () => {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "text/plain");
+// const read = async () => {
+//   var myHeaders = new Headers();
+//   myHeaders.append("Content-Type", "text/plain");
 
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders
-  };
+//   var requestOptions = {
+//     method: 'GET',
+//     headers: myHeaders
+//   };
 
-  await fetch("http://exercice-tpa/rest-api/contact/read.php", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-}
+//   await fetch("http://exercice-tpa/rest-api/contact/read.php", requestOptions)
+//     .then(response => response.text())
+//     .then(result => console.log(result))
+//     .catch(error => console.log('error', error));
+// }
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 10
+    // justifyContent: "",
+    paddingHorizontal: 0
   },
   button: {
     alignItems: "center",
@@ -61,5 +62,8 @@ const styles = StyleSheet.create({
   countContainer: {
     alignItems: "center",
     padding: 10
+  },
+  table: {
+    backgroundColor: "#f5f5f5",
   }
 });
