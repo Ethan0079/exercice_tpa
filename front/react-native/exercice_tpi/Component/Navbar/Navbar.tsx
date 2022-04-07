@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { ContactList } from '../Contact/ContactList';
+import { palette } from '@mui/system';
 
 const pages = ['Home', 'Contacts', 'Other'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -39,14 +39,14 @@ const ResponsiveAppBar = () => {
 
   return (
     <>
-        <AppBar position="static">
-        <Container maxWidth="xl">
+        <AppBar position="static" sx={{backgroundColor: '#B8B8B8'}}>
+        <Container maxWidth="xl" >
             <Toolbar disableGutters>
             <Typography
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                sx={{ mr: 5, display: { xs: 'none', md: 'flex' } }}
             >BS-Team </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -105,10 +105,10 @@ const ResponsiveAppBar = () => {
                 ))}
             </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
+            <Box sx={{ flexGrow: 0}}>
                 <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Ethan Marchand" src="/static/images/avatar/2.jpg" />
+                    <Avatar sx={{ border: '1px solid #FFBF00'}} alt="Ethan Marchand" src="/static/images/avatar/2.jpg" />
                 </IconButton>
                 </Tooltip>
                 <Menu
