@@ -2,6 +2,8 @@ import * as React from 'react';
 import {useState} from 'react';
 import { View } from 'react-native';
 import { CreateContact } from '../Contact/CreateContact';
+import { DeleteContact } from '../Contact/DeleteContact';
+import { GetContactsList } from '../Contact/GetContacts';
 import { UpdateContact } from '../Contact/UpdateContact';
 
 export default function Welcome() {
@@ -21,8 +23,10 @@ export default function Welcome() {
     return(
         <>
           <h1 style={h1Style}>Welcome</h1>
-          {/* <CreateContact /> */}
+          <GetContactsList />
+          <CreateContact />
           <UpdateContact />
+          <DeleteContact />
         </>
     );
 }

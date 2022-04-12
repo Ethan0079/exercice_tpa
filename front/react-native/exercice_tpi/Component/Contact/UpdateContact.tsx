@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 import { IContact } from "../../Interface/IContact";
 
 export function UpdateContact() {
-    const [contacts, setContacts] = React.useState<IContact[]>([]);
-
-
+    // const [contacts, setContacts] = React.useState<IContact[]>([]);
     const [id, setId] = useState("");
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
@@ -143,7 +141,7 @@ export function UpdateContact() {
                 <input style={inputStyle} type="number" value={tel_number} onChange={(e) => setTel_number(e.target.value)} />
             </label>
 
-            <input style={buttonStyle} type="submit" value="Envoyer" />
+            <input style={buttonStyle} type="submit" value="Update" />
         </form>
 
     </>

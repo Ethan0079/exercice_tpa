@@ -2,7 +2,7 @@ import React from "react";
 import { IContact } from "../../Interface/IContact";
 
 
-export function ContactList() {
+export function GetContactsList() {
   const [contacts, setContacts] = React.useState<IContact[]>([]);
 
   const getContacts = () => {
@@ -38,7 +38,7 @@ export function ContactList() {
 
   return (
     <>
-      <button style={buttonStyle} onClick={getContacts}>Load Contacts</button>
+      <button style={buttonStyle} onClick={getContacts}>Get contacts</button>
       {/* <ul>
           {contacts ? contacts.map((contact: IContact) => (
               <li key={contact.id}>{contact.firstname}</li>

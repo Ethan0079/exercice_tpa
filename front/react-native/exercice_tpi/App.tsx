@@ -5,7 +5,7 @@ import {TouchableOpacity} from 'react-native';
 import {Text} from 'react-native';
 import {View} from 'react-native';
 import {FlatList} from 'react-native';
-import {ContactList} from './Component/Contact/GetContactList';
+import {GetContactsList} from './Component/Contact/GetContacts';
 import Welcome from './Component/Home/Welcome';
 import Navbar from './Component/Navbar/Navbar';
 
@@ -25,7 +25,7 @@ export default function App() {
     {
       isHomePage(false);
       isOtherPage(false);
-      return <ContactList />;
+      return <GetContactsList />;
     } else if (homeMenu) 
     {
       isContactPage(false);
