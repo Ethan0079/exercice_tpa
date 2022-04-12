@@ -5,7 +5,7 @@ import {TouchableOpacity} from 'react-native';
 import {Text} from 'react-native';
 import {View} from 'react-native';
 import {FlatList} from 'react-native';
-import {ContactList} from './Component/Contact/ContactList';
+import {ContactList} from './Component/Contact/GetContactList';
 import Welcome from './Component/Home/Welcome';
 import Navbar from './Component/Navbar/Navbar';
 

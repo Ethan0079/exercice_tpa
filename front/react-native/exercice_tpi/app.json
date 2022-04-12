@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "exercice_tpi",
-    "slug": "exercice_tpi",
+    "name": "Exercice-TPI-Ethan",
+    "slug": "exercice-tpi-ethan",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/Ethan0079/exercice_tpa/tree/main/front/react-native/exercice_tpi"
   }
 }
