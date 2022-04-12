@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useState} from 'react';
 import { View } from 'react-native';
+import { CreateContact } from '../Contact/CreateContact';
 
 export default function Welcome() {
     const h1Style = {
@@ -17,6 +18,9 @@ export default function Welcome() {
 
 
     return(
-         <h1 style={h1Style}>Welcome</h1>
+        <>
+          <h1 style={h1Style}>Welcome</h1>
+          <CreateContact />
+        </>
     );
 }
