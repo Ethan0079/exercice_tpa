@@ -55,14 +55,14 @@ export function CreateContact() {
     };
     const labelStyle = {   
         color: 'white',
-        "font-family": 'Arial',
+        fontFamily: 'Arial',
         padding: '5px 10px 5px 0px',
-        "margin-right": '20px',
+        marginRight: '20px',
     };
     const inputStyle = {   
-        "font-family": 'Arial',
+        fontFamily: 'Arial',
         padding: '5px 10px',
-        "margin-left": "20px",
+        marginLeft: "20px",
     };
 
   return (

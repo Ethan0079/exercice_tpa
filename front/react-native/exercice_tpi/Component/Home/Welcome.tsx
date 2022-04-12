@@ -2,6 +2,7 @@ import * as React from 'react';
 import {useState} from 'react';
 import { View } from 'react-native';
 import { CreateContact } from '../Contact/CreateContact';
+import { UpdateContact } from '../Contact/UpdateContact';
 
 export default function Welcome() {
     const h1Style = {
@@ -13,14 +14,15 @@ export default function Welcome() {
         width: '150px',
         border: 'none',
         padding: '10px 20px',
-        "font-family": 'Arial',   
+        fontFamily: 'Arial',   
       };
 
 
     return(
         <>
           <h1 style={h1Style}>Welcome</h1>
-          <CreateContact />
+          {/* <CreateContact /> */}
+          <UpdateContact />
         </>
     );
 }

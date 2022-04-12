@@ -16,17 +16,17 @@ $contact->id = (isset($_GET['id']) && $_GET['id']) ? $_GET['id'] : '0';
 
 $result = $contact->read();
 
-if($result->num_rows > 0){    
+if($result->num_rows > 0){
     $itemRecords=array();
     $itemRecords["contact"]=array(); 
-	while ($item = $result->fetch_assoc()) { 	
-        extract($item); 
+	while ($item = $result->fetch_assoc()) {
+        extract($item);
         $itemDetails=array(
             "id" => $id,
             "firstname" => $firstname,
             "lastname" => $lastname,
 			"age" => $age,
-            "email" => $email,            
+            "email" => $email,
 			"tel_number" => $tel_number	
         ); 
        array_push($itemRecords["contact"], $itemDetails);
