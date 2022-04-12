@@ -8,8 +8,8 @@ export function CreateContact() {
     const [email, setEmail] = useState("");
     const [tel_number, setTel_number] = useState("");
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    // var myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
         "firstname": firstname,
@@ -63,6 +63,7 @@ export function CreateContact() {
         fontFamily: 'Arial',
         padding: '5px 10px',
         marginLeft: "20px",
+        maxWidth: '100px',
     };
 
   return (
@@ -88,7 +89,7 @@ export function CreateContact() {
             <input style={inputStyle} type="tel" value={tel_number} onChange={(e) => setTel_number(e.target.value)}/>
         </label>
 
-        <input style={buttonStyle} type="submit" value="Envoyer" />
+        <input style={buttonStyle} type="submit" value="Create" />
     </form>
   );
 }

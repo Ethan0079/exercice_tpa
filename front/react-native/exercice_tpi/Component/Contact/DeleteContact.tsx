@@ -6,21 +6,22 @@ export function DeleteContact() {
     
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
+    
     var raw = JSON.stringify({
-        "id": id,
+      "id": id
     });
-
+    
     var requestOptions = {
-        headers: myHeaders,
-        body: raw,
+      method: 'POST',
+      body: raw
     };
-
-    const deleteContact = () => {
-        fetch("http://exercice-tpa/rest-api/contact/delete.php", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+    
+    
+    const deleteContact = (event: { preventDefault: () => void; }) => {
+    fetch("http://exercice-tpa/rest-api/contact/delete.php", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
     };
 
     const buttonStyle = {
@@ -57,12 +58,14 @@ export function DeleteContact() {
     };
 
   return (
-    <form style={formStyle} onSubmit={deleteContact}>
-        <label style={labelStyle}>
-            ID :
-            <input style={inputStyle} type="number" value={id} onChange={(e) => setId(e.target.value)} />
-        </label>
-        <button style={buttonStyle} type="submit">Delete</button>
-    </form>
+      <>
+        <form style={formStyle}>
+            <label style={labelStyle}>
+                ID :
+                <input style={inputStyle} type="number" value={id} onChange={(e) => setId(e.target.value)} />
+            </label>
+        </form>
+        <button style={buttonStyle} onClick={deleteContact}>Delete</button>
+    </>
   );
 }

@@ -7,9 +7,9 @@ export function GetContactsList() {
 
   const getContacts = () => {
    fetch("http://exercice-tpa/rest-api/contact/read.php")
-      .then((response) => response.json())
-      .then(data => setContacts(data.contact))
-      .catch(error => console.log('error', error));
+    .then((response) => response.json())
+    .then(data => setContacts(data.contact))
+    .catch(error => console.log('error', error));
   };
   const buttonStyle = {
     marginTop: 20,
