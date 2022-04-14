@@ -1,0 +1,25 @@
+.link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+    padding: 10px;
+}
+.link:hover {
+    border-bottom: 1px solid rgb(255, 191, 0);
+    background-color: rgba(128, 128, 128, 0.50);
+    
+}
+@media (max-width: 900px) {
+    .link {
+        color: rgb(255, 191, 0);
+        padding: 10px;
+        margin-right: 0px;
+    }
+}
+.MuiList-padding {
+    display: flex;
+    flex-direction: column;
+}

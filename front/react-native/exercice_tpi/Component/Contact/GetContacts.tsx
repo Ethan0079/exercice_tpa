@@ -5,8 +5,8 @@ import { IContact } from "../../Interface/IContact";
 export function GetContactsList() {
   const [contacts, setContacts] = React.useState<IContact[]>([]);
 
-  const getContacts = () => {
-   fetch("http://exercice-tpa/rest-api/contact/read.php")
+  const getContacts = async () => {
+   await fetch("http://exercice-tpa/rest-api/contact/read.php")
     .then((response) => response.json())
     .then(data => setContacts(data.contact))
     .catch(error => console.log('error', error));
@@ -22,6 +22,7 @@ export function GetContactsList() {
     border: 'none',
     padding: '10px 20px',
   };
+
   const DisplayContact = contacts.map(
     (contact) => {
       return (

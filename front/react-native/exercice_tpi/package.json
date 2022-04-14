@@ -12,16 +12,22 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@mui/material": "^5.6.0",
+    "@mui/icons-material": "^5.6.1",
+    "@mui/material": "^5.6.1",
     "@mui/styled-engine-sc": "^5.5.2",
     "@mui/x-data-grid": "^5.8.0",
     "@mui/x-data-grid-generator": "^5.8.0",
     "expo": "~44.0.0",
     "expo-status-bar": "~1.2.0",
+    "node-sass": "^7.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-sass-transformer": "^2.0.0",
     "react-native-web": "0.17.1",
+    "react-router-dom": "^6.3.0",
+    "sass": "^1.50.0",
+    "scss": "^0.2.4",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {

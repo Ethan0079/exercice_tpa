@@ -1,13 +1,17 @@
 import * as React from 'react';
 import {useState} from 'react';
 import {StyleSheet} from 'react-native';
-import {TouchableOpacity} from 'react-native';
 import {Text} from 'react-native';
 import {View} from 'react-native';
-import {FlatList} from 'react-native';
 import {GetContactsList} from './Component/Contact/GetContacts';
 import Welcome from './Component/Home/Welcome';
 import Navbar from './Component/Navbar/Navbar';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 export default function App() {
   const [count, setCount] = useState(0);
@@ -45,7 +49,7 @@ export default function App() {
     <>
     <View style={styles.container}>
       <Navbar/>
-      <MenuLink isContactPage={contactMenu} isHomePage={homeMenu} isOtherPage={OtherMenu}/>
+      {/* <MenuLink isContactPage={contactMenu} isHomePage={homeMenu} isOtherPage={OtherMenu}/> */}
     </View>
     
   </>
