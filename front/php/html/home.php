@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <?php include "head.php"; ?>
+
+<body>
+    <?php include "navbar.php"; ?>
+
+</body>
+
+<footer>
+    <?php include "footer.php"; ?>
+</footer>
+
+</html>
