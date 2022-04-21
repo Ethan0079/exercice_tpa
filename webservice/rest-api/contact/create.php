@@ -13,17 +13,20 @@ $db = $database->getConnection();
  
 $contact = new Contact($db);
  
-$data = json_decode(file_get_contents("php://input"));
+$data = json_decode(file_get_contents("php://input"), true);
+// $data = file_get_contents("php://input");
+// file_put_contents($filename, $data);
+ $data = $data['contact'];
 
-if(!empty($data->firstname) && !empty($data->lastname) &&
-!empty($data->age) && !empty($data->email) &&
-!empty($data->tel_number)){    
+if(!empty($data["firstname"]) && !empty($data["lastname"]) &&
+!empty($data["age"]) && !empty($data["email"]) &&
+!empty($data["tel_number"])){    
 
-    $contact->firstname         = $data->firstname;
-    $contact->lastname          = $data->lastname;
-    $contact->age               = $data->age;
-    $contact->email             = $data->email;	
-    $contact->tel_number        = $data->tel_number;
+    $contact->firstname         = $data["firstname"];
+    $contact->lastname          = $data["lastname"];
+    $contact->age               = $data["age"];
+    $contact->email             = $data["email"];	
+    $contact->tel_number        = $data["tel_number"];
     
     if($contact->create()){         
         http_response_code(201);         
@@ -34,6 +37,13 @@ if(!empty($data->firstname) && !empty($data->lastname) &&
     }
 }else{    
     http_response_code(400);    
-    echo json_encode(array("message" => "Unable to create contact. Data is incomplete."));
+    echo json_encode(array(
+        "message" => "Unable to create contact. Data is incomplete." ,
+        "Data" => $data, "ClassName" => get_class($data),
+        "Type" => gettype($data),
+        "Firstname" => $data["firstname"]
+    ));
+
+
 }
 ?>
