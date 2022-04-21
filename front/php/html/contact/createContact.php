@@ -7,31 +7,42 @@
     <div class="container">
         <h1>Create Contact</h1>
 
-        <form method="post">  
-            
-            <br />  
-            <label>Firstname</label>  
-            <input type="text" name="firstname" class="form-control" /><br />
+        <form id="formCreateContact" method="post">
 
-            <label>Lastname</label>  
-            <input type="text" name="lastname" class="form-control" /><br />
+            <div class="form-group-input">
+                <label>Firstname</label>  
+                <input type="text" name="firstname" class="form-control" />
+            </div>
 
-            <label>Age</label>  
-            <input type="number" name="age" class="form-control" /><br />
+            <div class="form-group-input">
+                <label>Lastname</label>  
+                <input type="text" name="lastname" class="form-control" />
+            </div>
 
-            <label>Email</label>  
-            <input type="text" name="email" class="form-control" /><br />
+            <div class="form-group-input">
+                <label>Age</label>  
+                <input type="number" name="age" class="form-control" />
+            </div>
 
-            <label>Tel number</label>  
-            <input type="number" name="telnumber" class="form-control" /><br />
+                <div class="form-group-input">
+                <label>Email</label>  
+            <input type="text" name="email" class="form-control" />
+            </div>
 
-            <input type="submit" name="submit" value="Submit" class="btn btn-info" /><br />
+            <div class="form-group-input">
+                <label>Tel number</label>  
+                <input type="number" name="telnumber" class="form-control" />
+            </div>
+            <div class="form-group-input">
+                <label></label>
+                <input type="submit" name="submit" value="Submit" class="btn btn-info mx-auto form-control" />
+            </div>
 
             <?php  
-            if(isset($message))  
-            {  
-                echo $message;  
-            }  
+                if(isset($message))  
+                {  
+                    echo $message;  
+                }  
             ?>
         </form>  
 
@@ -70,11 +81,11 @@
 
                     // Setup request to send json via POST
                     $data = array(
-                        'firstname' => 'codexworld',
-                        'lastname' => 'codexworld',
-                        'age' => '27',
-                        'email' => 'asdasd',
-                        'tel_number' => '123123'
+                        'firstname' => $_POST["firstname"],
+                        'lastname' => $_POST["lastname"],
+                        'age' => $_POST["age"],
+                        'email' =>  $_POST["email"],
+                        'tel_number' => $_POST["telnumber"]
                     );
                     // $payload = json_encode($data);
 
@@ -112,7 +123,7 @@
                     echo $error;
                 }
             } else {
-                echo "Problème !";
+                // echo "Problème !";
             }
         ?> 
 
