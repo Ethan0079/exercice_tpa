@@ -4,29 +4,29 @@ body{
 nav {
     border-bottom: 1px solid darkorange;
 }
-#formCreateContact {
+#formContact {
     display: flex;
     flex-wrap: wrap;
 }
-#formCreateContact input.form-control {
+#formContact input.form-control {
     border: 1px solid darkorange;
     margin-bottom: 20px;
 }
-#formCreateContact input.form-control:focus{
+#formContact input.form-control:focus{
     border: 1px solid darkorange;
     box-shadow: 0 0 0 0.25rem rgba(255, 140, 0, 0.25);
 }
-#formCreateContact .btn {
+#formContact .btn {
     background-color: darkorange;
     border-color: darkorange;
     color: white;
     margin-bottom: 20px;
 }
-#formCreateContact .btn:focus {
+#formContact .btn:focus {
     border: 1px solid darkorange;
     box-shadow: 0 0 0 0.25rem rgba(255, 140, 0, 0.25);
 }
-#formCreateContact .form-group-input {
+#formContact .form-group-input {
     width: 50%;
     padding: 20px;
 }

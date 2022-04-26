@@ -13,18 +13,19 @@ $db = $database->getConnection();
  
 $contact = new Contact($db);
  
-$data = json_decode(file_get_contents("php://input"));
+$data = json_decode(file_get_contents("php://input"), true);
+$data = $data['contact'];
 
-if(!empty($data->id) && !empty($data->firstname) && 
-!empty($data->lastname) && !empty($data->age) && 
-!empty($data->email) && !empty($data->tel_number)){ 
+if(!empty($data["id"]) && !empty($data["firstname"]) && 
+!empty($data["lastname"]) && !empty($data["age"]) && 
+!empty($data["email"]) && !empty($data["tel_number"])){ 
 	
-	$contact->id = $data->id; 
-	$contact->firstname = $data->firstname;
-    $contact->lastname = $data->lastname;
-    $contact->age = $data->age;
-    $contact->email = $data->email;	
-    $contact->tel_number = $data->tel_number;
+	$contact->id = $data["id"];
+	$contact->firstname = $data["firstname"];
+	$contact->lastname = $data["lastname"];
+	$contact->age = $data["age"];
+	$contact->email = $data["email"];
+	$contact->tel_number = $data["tel_number"];
 	
 	if($contact->update()){     
 		http_response_code(200);   
@@ -36,6 +37,11 @@ if(!empty($data->id) && !empty($data->firstname) &&
 	
 } else {
 	http_response_code(400);    
-    echo json_encode(array("message" => "Unable to update contact. Data is incomplete."));
+    echo json_encode(array(
+        "message" => "Unable to update contact. Data is incomplete." ,
+        "Data" => $data, "ClassName" => get_class($data),
+        "Type" => gettype($data),
+        "Firstname" => $data["firstname"]
+    ));
 }
 ?>
