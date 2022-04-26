@@ -30,3 +30,7 @@ nav {
     width: 50%;
     padding: 20px;
 }
+#formContact .form-control.input-error {
+    border-color: red !important;
+    border-width: 2px !important;
+}
