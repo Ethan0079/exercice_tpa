@@ -13,10 +13,11 @@ $db = $database->getConnection();
  
 $contact = new Contact($db);
  
-$data = json_decode(file_get_contents("php://input"));
+$data = json_decode(file_get_contents("php://input"), true);
+$data = $data['contact'];
 
-if(!empty($data->id)) {
-	$contact->id = $data->id;
+if(!empty($data["id"])) {
+	$contact->id = $data["id"];
 	if($contact->delete()){    
 		http_response_code(200); 
 		echo json_encode(array("message" => "Contact was deleted."));
@@ -26,6 +27,11 @@ if(!empty($data->id)) {
 	}
 } else {
 	http_response_code(400);    
-    echo json_encode(array("message" => "Unable to delete contact. Data is incomplete."));
+    echo json_encode(array(
+        "message" => "Unable to delete contact. Data is incomplete." ,
+        "Data" => $data, "ClassName" => get_class($data),
+        "Type" => gettype($data),
+        "ID" => $data["id"]
+    ));
 }
 ?>
