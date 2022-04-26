@@ -113,6 +113,12 @@
 
                     // Close cURL resource
                     curl_close($ch);
+
+                    if (mail($_POST["email"],utf8_decode("Création d'un contact BS-Team"),utf8_decode("Votre contact a bien été créé"))) {
+                        echo "Email successfully sent to Ethan ...\n";
+                      } else {
+                        echo "Failed to send email...";
+                      }
                     
                     echo  "Contact created successfully !";
                     // echo $result;
