@@ -3,7 +3,18 @@
     <?php include "../head.php"; ?>
 
 <body>
-    <?php include "../navbar.php"; ?>
+    <?php 
+        include "../navbar.php"; 
+
+        function isNotEmpty($value) {
+            if(empty($value)){
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+    ?>
     <div class="container">
         <h1>Delete Contact</h1>
 

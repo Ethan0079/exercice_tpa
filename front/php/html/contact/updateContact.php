@@ -23,7 +23,7 @@
             <div class="form-group-input">
                 <label>ID</label>  
                 <input type="number" name="id" 
-                    value="<?php echo  isset($_POST["firstname"]) ? $_POST["firstname"] : ''; ?>"
+                    value="<?php echo  isset($_POST["id"]) ? $_POST["id"] : ''; ?>"
                     class="form-control
                         <?php 
                         if(isset($_POST["id"])){
@@ -119,26 +119,26 @@
 
             <div class="form-group-input">
                 <label>Tel number</label>  
-                <input type="tel" name="telnumber" 
-                    value="<?php echo isset($_POST["telnumber"]) ? $_POST["telnumber"] : ''; ?>"
+                <input type="text" name="telnumber" 
+                    value="<?php echo isset($_POST["telnumber"]) ? $_POST["telnumber"] : ''; ?>" 
                     class="form-control
-                     <?php if(isset($_POST["telnumber"])){
-                        if(isNotEmpty($_POST["telnumber"])){
-                            echo "";
-                        } else {
-                            echo "input-error";
+                    <?php 
+                        if(isset($_POST["email"])){
+                            if(isNotEmpty($_POST["email"])){
+                                echo "";
+                            } else {
+                                echo "input-error";
+                            }
                         }
-                     }
                     ?>"
-                    placeholder="+41 79 349 56 87"
-                    pattern="^(?:0|\(?\+41\)?\s?|0041\s?)(21|22|24|26|27|31|32|33|34|41|43|44|51|52|55|56|58|61|62|71|74|76|77|78|79|81|91)(?:[\.\-\s]?\d\d\d)(?:[\.\-\s]?\d\d){2}$"
+                    placeholder="0799396787"
                     required
                 />
             </div>
 
             <div class="form-group-input">
                 <label></label>
-                <input type="submit" name="formContact" value="Update" class="btn btn-info mx-auto form-control" />
+                <input type="submit" name="submit" value="Update" class="btn btn-info mx-auto form-control" />
             </div>
 
             <?php  
@@ -147,7 +147,7 @@
                     echo $message;  
                 }  
             ?>
-        </form>  
+        </form>
 
         <?php
             $message = '';  
@@ -238,7 +238,7 @@
                     echo $error;
                 }
             } else {
-                // echo "Problème !";
+                 echo "Problème !";
             }
         ?> 
 

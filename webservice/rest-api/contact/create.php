@@ -16,7 +16,10 @@ $contact = new Contact($db);
 $data = json_decode(file_get_contents("php://input"), true);
 // $data = file_get_contents("php://input");
 // file_put_contents($filename, $data);
- $data = $data['contact'];
+// print_r($data);
+
+$data = $data['contact'];
+
 
 if(!empty($data["firstname"]) && !empty($data["lastname"]) &&
 !empty($data["age"]) && !empty($data["email"]) &&
@@ -33,6 +36,7 @@ if(!empty($data["firstname"]) && !empty($data["lastname"]) &&
         echo json_encode(array("message" => "Contact was created."));
     } else{         
         http_response_code(503);        
+        echo json_encode(array("Contact" => $contact));
         echo json_encode(array("message" => "Unable to create contact."));
     }
 }else{    

@@ -37,7 +37,7 @@ class Contact {
 		$this->lastname = htmlspecialchars(strip_tags($this->lastname));
 		$this->age = htmlspecialchars(strip_tags($this->age));
 		$this->email = htmlspecialchars(strip_tags($this->email));
-		$this->tel_number = htmlspecialchars(strip_tags($this->tel_number));
+		$this->tel_number = strip_tags($this->tel_number);
 
 		$stmt->bind_param("ssiss", $this->firstname, $this->lastname, $this->age, $this->email, $this->tel_number);
 		
@@ -83,6 +83,24 @@ class Contact {
 		$this->id = htmlspecialchars(strip_tags($this->id));
 	 
 		$stmt->bind_param("i", $this->id);
+	 
+		if($stmt->execute()){
+			return true;
+		}
+	 
+		return false;
+		$stmt.close();	 
+	}
+
+	function checkExistByEmail(){
+		
+		$stmt = $this->conn->prepare("
+			SELECT FROM ".$this->contactTable." 
+			WHERE email = ?");
+			
+		$this->email = htmlspecialchars(strip_tags($this->email));
+	 
+		$stmt->bind_param("s", $this->email);
 	 
 		if($stmt->execute()){
 			return true;
