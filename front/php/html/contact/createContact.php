@@ -191,16 +191,7 @@
                         'email' =>  $_POST["email"],
                         'tel_number' => $_POST["telnumber"]
                     );
-                    // $payload = json_encode($data);
 
-                    // $payload = "{
-                    //     'firstname':'codexworld',
-                    //     'lastname':'codexworld',
-                    //     'age':'27',
-                    //     'email':'asdasd',
-                    //     'tel_number':'123123'
-                    // }";
-                    // $payload = json_encode($payload);
                     $payload2 = json_encode(array("contact" => $data));
 
                     // Attach encoded JSON string to the POST fields
@@ -225,9 +216,9 @@
                   
                     if (mail($dest, $subjetc, $body, $headers)){
                         echo "Email successfully sent to $dest ...\n";
-                      } else {
+                    } else {
                         echo "Failed to send email...";
-                      }
+                    }
                     
                     echo  "Contact created successfully !\n";
                     // echo $result;
