@@ -9,9 +9,22 @@
 
         <form id="formContact" method="post">
 
-            <div class="form-group-input">
+        <div class="form-group-input">
                 <label>ID</label>  
-                <input type="number" name="id" class="form-control" />
+                <input type="number" name="id" 
+                    value="<?php echo  isset($_POST["firstname"]) ? $_POST["firstname"] : ''; ?>"
+                    class="form-control
+                        <?php 
+                        if(isset($_POST["id"])){
+                            if(isNotEmpty($_POST["id"])){
+                                echo "";
+                            } else {
+                                echo "input-error";
+                            }
+                        }
+                    ?>" 
+                    required
+                />
             </div>
 
             <div class="form-group-input">
@@ -33,7 +46,9 @@
 
             if(isset($_POST["submit"]))  
             {  
-                if(empty($_POST["id"]))  
+                $id = $_POST["id"];
+
+                if(empty($id))  
                 {  
                     $error = "<label class='text-danger'>Enter id</label>";  
                 } else {  

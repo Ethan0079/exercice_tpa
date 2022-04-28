@@ -155,27 +155,34 @@
 
             if(isset($_POST["submit"]))  
             {  
-                if(empty($_POST["id"]))  
+                $id = $_POST["id"];
+                $firstname = $_POST["firstname"];
+                $lastname = $_POST["lastname"];
+                $age = $_POST["age"];
+                $email = $_POST["email"];
+                $telnumber = $_POST["telnumber"];
+
+                if(empty($id))  
                 {  
                     $error = "<label class='text-danger'>Enter id</label>";  
                 }
-                if(empty($_POST["firstname"]))  
+                if(empty($firstname))  
                 {  
                     $error = "<label class='text-danger'>Enter firstname</label>";  
                 }
-                else if(empty($_POST["lastname"]))  
+                else if(empty($lastname))  
                 {  
                     $error = "<label class='text-danger'>Enter lastname</label>";  
                 }
-                else if(empty($_POST["age"]))  
+                else if(empty($age))  
                 {  
                     $error = "<label class='text-danger'>Enter age</label>";  
                 }
-                else if(empty($_POST["email"]))  
+                else if(empty($email))  
                 {  
                     $error = "<label class='text-danger'>Enter email</label>";  
                 }
-                else if(empty($_POST["telnumber"]))  
+                else if(empty($telnumber))  
                 {  
                     $error = "<label class='text-danger'>Enter tel number</label>";  
                 } else {  
