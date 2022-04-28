@@ -28,7 +28,8 @@ if(!empty($data["id"]) && !empty($data["firstname"]) &&
 	$contact->tel_number = $data["tel_number"];
 	
 	if($contact->update()){     
-		http_response_code(200);   
+		http_response_code(200);
+		header("Location: /rest-api/contact/read?id=$contact->id");
 		echo json_encode(array("message" => "Contact was updated."));
 	} else {    
 		http_response_code(503);     

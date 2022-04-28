@@ -3,6 +3,7 @@ header('Content-Type: application/json; charset=UTF-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST');
 header("Access-Control-Allow-Headers: *");
+header("Location: /rest-api/contact/read");
 
 include_once '../config/Database.php';
 include_once '../class/Contact.php';
@@ -31,7 +32,7 @@ if($result->num_rows > 0){
         ); 
        array_push($itemRecords["contact"], $itemDetails);
     }    
-    http_response_code(200);     
+    http_response_code(200);
     echo json_encode($itemRecords);
 }else{     
     http_response_code(404);

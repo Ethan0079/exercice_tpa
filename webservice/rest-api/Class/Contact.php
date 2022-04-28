@@ -22,17 +22,25 @@ class Contact {
 		} else {
 			$stmt = $this->conn->prepare("SELECT * FROM ".$this->contactTable);		
 		}		
-		$stmt->execute();			
-		$result = $stmt->get_result();		
-		return $result;
-		$stmt.close();
+
+		try {
+			$stmt->execute();
+			$result = $stmt->get_result();		
+			return $result;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			return false;
+		} finally {
+			$stmt->close();
+		}
+		
 	}
-	
+
 	function create(){
 		$stmt = $this->conn->prepare("
 			INSERT INTO ".$this->contactTable."(`firstname`, `lastname`, `age`, `email`, `tel_number`)
 			VALUES(?,?,?,?,?)");
-			
+
 		$this->firstname = htmlspecialchars(strip_tags($this->firstname));
 		$this->lastname = htmlspecialchars(strip_tags($this->lastname));
 		$this->age = htmlspecialchars(strip_tags($this->age));
@@ -41,12 +49,18 @@ class Contact {
 
 		$stmt->bind_param("ssiss", $this->firstname, $this->lastname, $this->age, $this->email, $this->tel_number);
 		
-		if($stmt->execute()){
+		try {
+			$stmt->execute();
+			// $stmt->get_result();
+			$this->id = $this->conn->insert_id;
+			// $this->id = 2;
 			return true;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			return false;
+		} finally {
+			$stmt->close();
 		}
-		
-		return false;
-		$stmt.close();
 
 	}
 		
@@ -62,16 +76,20 @@ class Contact {
 		$this->lastname = htmlspecialchars(strip_tags($this->lastname));
 		$this->age = htmlspecialchars(strip_tags($this->age));
 		$this->email = htmlspecialchars(strip_tags($this->email));
-		$this->tel_number = htmlspecialchars(strip_tags($this->tel_number));
+		$this->tel_number = strip_tags($this->tel_number);
 	 
 		$stmt->bind_param("ssissi", $this->firstname, $this->lastname, $this->age, $this->email, $this->tel_number, $this->id);
-		
-		if($stmt->execute()){
+
+		try {
+			$stmt->execute();
+			$stmt->get_result();
 			return true;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			return false;
+		} finally {
+			$stmt->close();
 		}
-	 
-		return false;
-		$stmt.close();
 	}
 	
 	function delete(){
@@ -83,13 +101,17 @@ class Contact {
 		$this->id = htmlspecialchars(strip_tags($this->id));
 	 
 		$stmt->bind_param("i", $this->id);
-	 
-		if($stmt->execute()){
+
+		try {
+			$stmt->execute();
+			$stmt->get_result();
 			return true;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			return false;
+		} finally {
+			$stmt->close();
 		}
-	 
-		return false;
-		$stmt.close();	 
 	}
 
 	function checkExistByEmail(){
@@ -101,13 +123,17 @@ class Contact {
 		$this->email = htmlspecialchars(strip_tags($this->email));
 	 
 		$stmt->bind_param("s", $this->email);
-	 
-		if($stmt->execute()){
-			return true;
-		}
-	 
-		return false;
-		$stmt.close();	 
+	 	
+		try {
+			$stmt->execute();
+			$result = $stmt->get_result();
+			return $result;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			return false;
+		} finally {
+			$stmt->close();
+		} 
 	}
 }
 ?>

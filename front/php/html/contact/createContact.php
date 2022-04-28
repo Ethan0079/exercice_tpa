@@ -132,7 +132,9 @@
         </form>  
 
         <?php
-
+            $resource_location = "";
+            $resource_status = false;
+            
             function validateEmail($email) {
                 $regex = "/^([a-zA-Z0-9\.]+@+[a-zA-Z]+(\.)+[a-zA-Z]{2,3})$/";
                 // echo preg_match($regex, $email) ? "The email is valid"."<br>" :"The email is       not valid";
@@ -162,7 +164,7 @@
                     $error = "<label class='text-danger'>Enter lastname</label>";  
                 }
                 else if(empty($age))
-                {  
+                {
                     $error = "<label class='text-danger'>Enter age</label>";  
                 }
                 else if(empty($email))  
@@ -195,9 +197,27 @@
 
                     $payload2 = json_encode(array("contact" => $data));
 
+                    
+                    // curl_setopt($ch, CURLOPT_HEADER,1);
+
+
                     // Attach encoded JSON string to the POST fields
                     curl_setopt($ch, CURLOPT_POSTFIELDS, $payload2);
 
+                    curl_setopt($ch, CURLOPT_HEADERFUNCTION,
+                        function($curl, $header) use (&$headers)
+                        {
+                            $len = strlen($header);
+                            $header = explode(':', $header, 2);
+                            $resource_status = true;
+                            if ($header[0] == 'Location') {
+
+                                $resource_location = $header[1];
+                            }
+                        
+                            return $len;
+                        }
+                    );
                     // Set the content type to application/json
                     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
 
@@ -226,6 +246,8 @@
                     $data = json_decode($result, true);
                     $data = $data['message'];
                     echo $data;
+                    // echo $resource_location;
+                    // echo "resource status" . ($resource_status ? "true" : "false");
 
                 }
                 
