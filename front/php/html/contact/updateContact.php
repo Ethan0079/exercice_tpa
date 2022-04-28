@@ -229,8 +229,11 @@
                     // Close cURL resource
                     curl_close($ch);
                     
-                    echo  "Contact updated successfully !";
-                    // echo $result;
+                    // echo  "Contact updated successfully !";
+
+                    $data = json_decode($result, true);
+                    $data = $data['message'];
+                    echo $data;
                 }
                 
                 if(isset($error))  

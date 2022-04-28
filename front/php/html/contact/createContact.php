@@ -216,13 +216,17 @@
                     $headers = "From: Exercice TPI";
                   
                     if (mail($dest, $subjetc, $body, $headers)){
-                        echo "Email successfully sent to $dest ...\n";
+                        // echo "Email successfully sent to $dest ...\n";
                     } else {
                         echo "Failed to send email...";
                     }
                     
-                    echo  "Contact created successfully !\n";
-                    // echo $result;
+                    // echo  "Contact created successfully !\n";
+
+                    $data = json_decode($result, true);
+                    $data = $data['message'];
+                    echo $data;
+
                 }
                 
                 if(isset($error))  
