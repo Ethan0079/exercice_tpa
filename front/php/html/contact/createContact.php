@@ -105,8 +105,8 @@
                     value="<?php echo isset($_POST["telnumber"]) ? $_POST["telnumber"] : ''; ?>" 
                     class="form-control
                     <?php 
-                        if(isset($_POST["email"])){
-                            if(isNotEmpty($_POST["email"])){
+                        if(isset($_POST["telnumber"])){
+                            if(isNotEmpty($_POST["telnumber"])){
                                 echo "";
                             } else {
                                 echo "input-error";

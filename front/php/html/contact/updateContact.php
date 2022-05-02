@@ -123,8 +123,8 @@
                     value="<?php echo isset($_POST["telnumber"]) ? $_POST["telnumber"] : ''; ?>" 
                     class="form-control
                     <?php 
-                        if(isset($_POST["email"])){
-                            if(isNotEmpty($_POST["email"])){
+                        if(isset($_POST["telnumber"])){
+                            if(isNotEmpty($_POST["telnumber"])){
                                 echo "";
                             } else {
                                 echo "input-error";
@@ -204,14 +204,6 @@
                     );
                     // $payload = json_encode($data);
 
-                    // $payload = "{
-                    //     'firstname':'codexworld',
-                    //     'lastname':'codexworld',
-                    //     'age':'27',
-                    //     'email':'asdasd',
-                    //     'tel_number':'123123'
-                    // }";
-                    // $payload = json_encode($payload);
                     $payload2 = json_encode(array("contact" => $data));
 
                     // Attach encoded JSON string to the POST fields
