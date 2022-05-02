@@ -13,21 +13,20 @@ $db = $database->getConnection();
  
 $contact = new Contact($db);
  
-$data = json_decode(file_get_contents("php://input"));
+$data = json_decode(file_get_contents("php://input"), true);
 // $data = file_get_contents("php://input");    
 // file_put_contents($filename, $data);
-// $data = $data['contact'];
+$data = $data['contact'];
 
-if(!empty($data->email)){    
-
-    // $contact->email = $data["email"];
-    $contact->email = $data->email;
+if(!empty($data["email"])) {
+    echo "email: " . $data["email"];
+    $contact->email = $data["email"];	
     
     
     if($contact->checkExistByEmail()){         
-        http_response_code(503);         
+        http_response_code(200);         
         echo json_encode(array("message" => "User already exist"));
-    } else{         
+    } else{
         http_response_code(201);        
         echo json_encode(array("message" => "User email not used"));
     }

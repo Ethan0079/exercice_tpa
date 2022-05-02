@@ -70,7 +70,7 @@ class Contact {
 			UPDATE ".$this->contactTable." 
 			SET firstname= ?, lastname = ?, age = ?, email = ?, tel_number = ?
 			WHERE id = ?");
-	 
+		
 		$this->id = htmlspecialchars(strip_tags($this->id));
 		$this->firstname = htmlspecialchars(strip_tags($this->firstname));
 		$this->lastname = htmlspecialchars(strip_tags($this->lastname));
@@ -115,25 +115,24 @@ class Contact {
 	}
 
 	function checkExistByEmail(){
-		
-		$stmt = $this->conn->prepare("
-			SELECT FROM ".$this->contactTable." 
-			WHERE email = ?");
-			
+
+		$stmt = $this->conn->prepare("SELECT * FROM ".$this->contactTable." WHERE email = ?");
+	 
 		$this->email = htmlspecialchars(strip_tags($this->email));
 	 
 		$stmt->bind_param("s", $this->email);
 	 	
 		try {
 			$stmt->execute();
-			$result = $stmt->get_result();
-			return $result;
+			$stmt->store_result();
+			
+			return $stmt->num_rows;
 		} catch (Exception $e) {
 			echo $e->getMessage();
 			return false;
 		} finally {
 			$stmt->close();
-		} 
+		}
 	}
 }
 ?>
