@@ -20,8 +20,8 @@
 
         <form id="formContact" method="post">
 
-        <div class="form-group-input">
-                <label>ID</label>  
+            <div class="form-group-input">
+                <label>ID or Email</label>  
                 <input type="number" name="id" 
                     value="<?php echo  isset($_POST["firstname"]) ? $_POST["firstname"] : ''; ?>"
                     class="form-control
@@ -42,7 +42,7 @@
                 <label></label>
                 <input type="submit" name="submit" value="Submit" class="btn btn-info mx-auto form-control" />
             </div>
-
+                        
             <?php  
                 if(isset($message))  
                 {  

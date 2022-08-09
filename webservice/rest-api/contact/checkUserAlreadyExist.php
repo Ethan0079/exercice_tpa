@@ -27,7 +27,7 @@ if(!empty($data["email"])) {
         http_response_code(200);         
         echo json_encode(array("message" => "User already exist"));
     } else{
-        http_response_code(201);        
+        http_response_code(404);        
         echo json_encode(array("message" => "User email not used"));
     }
 }else{    
